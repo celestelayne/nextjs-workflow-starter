@@ -47,7 +47,7 @@ Before calling work done, run and report real results of:
 
 ```bash
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm test
 npm run build
 npm run test:e2e

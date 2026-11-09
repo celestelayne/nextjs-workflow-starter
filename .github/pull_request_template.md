@@ -9,7 +9,7 @@ Short summary. Note anything outside the approved spec and why.
 ## Verification
 
 - [ ] `npm run lint`
-- [ ] `npx tsc --noEmit`
+- [ ] `npm run typecheck`
 - [ ] `npm test`
 - [ ] `npm run build`
 - [ ] `npm run test:e2e`

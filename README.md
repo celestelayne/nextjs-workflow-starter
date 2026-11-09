@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm test            # Vitest unit tests
 npm run build
 npm run test:e2e    # Playwright, against the production build

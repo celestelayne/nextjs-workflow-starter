@@ -20,7 +20,7 @@ Build what the approved slice specifies, no more and no less.
 2. Run the OpenSpec apply workflow (`/opsx:apply <slice-name>`) and work through tasks in order, ticking each off as it is finished.
 3. Place code by ownership: routes in `src/app`, domain logic and feature UI in `src/features/<feature>`, shared UI in `src/components`, shared infrastructure in `src/lib`.
 4. Write tests for important domain behavior and for each failure case in the spec.
-5. Run `npm run lint`, `npx tsc --noEmit`, `npm test`, `npm run build`, and `npm run test:e2e`. Fix failures before continuing. Add a Playwright test in `e2e/` when the slice adds a user-visible flow.
+5. Run `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`, and `npm run test:e2e`. Fix failures before continuing. Add a Playwright test in `e2e/` when the slice adds a user-visible flow.
 6. Report what was built, what was verified, and anything deferred.
 
 ## Done when

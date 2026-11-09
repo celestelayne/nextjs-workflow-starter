@@ -5,12 +5,12 @@ context: |
   docs/architecture/README.md before proposing structure.
   Code ownership: src/app (thin routes), src/features (domain logic, schemas,
   feature UI), src/components (shared UI), src/lib (shared infrastructure).
-  Not yet selected: database/ORM, auth provider, background jobs, AI SDK,
-  external integrations. Do not assume any; list as open questions if a slice
-  needs one.
+  Selected: Supabase (Postgres and Auth), shadcn/ui, Vitest, Playwright.
+  Not yet selected: ORM, background jobs, AI SDK, external integrations. Do
+  not assume any; list as open questions if a slice needs one.
   Every slice must be a complete, independently verifiable vertical slice.
   AI output is a proposal; state changes need human approval.
-  Verification: npm run lint, npx tsc --noEmit, npm run build, plus tests.
+  Verification: npm run lint, typecheck, test, build, and test:e2e.
 
 rules:
   proposal:
