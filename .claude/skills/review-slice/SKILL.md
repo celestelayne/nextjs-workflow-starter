@@ -24,7 +24,7 @@ Verify the implementation against the approved spec. Read-only: report findings,
 1. Read the slice spec, the OpenSpec change (`proposal.md`, specs, `tasks.md`), and the diff for the slice.
 2. Check each acceptance criterion and failure case against the code and tests. Mark each verified, unverified, or failing.
 3. Check conventions from `AGENTS.md` and `docs/architecture/README.md`: module boundaries, validation at boundaries, deterministic state changes, scope creep beyond the spec.
-4. Run `npm run lint`, `npx tsc --noEmit`, tests if present, and `npm run build`. Report real output.
+4. Run `npm run lint`, `npx tsc --noEmit`, `npm test`, `npm run build`, and `npm run test:e2e`. Report real output.
 5. Run `/opsx:verify <slice-name>` as an additional check and fold its results into the findings.
 
 ## Output format

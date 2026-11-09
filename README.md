@@ -20,8 +20,12 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run lint
 npx tsc --noEmit
+npm test            # Vitest unit tests
 npm run build
+npm run test:e2e    # Playwright, against the production build
 ```
+
+The first E2E run needs a browser: `npx playwright install chromium`. CI runs all of these on every push and pull request.
 
 ## Workflow
 
@@ -46,6 +50,8 @@ src/app           Routes, layouts, pages
 src/features      Feature-owned domain logic and UI
 src/components    Shared UI components
 src/lib           Shared technical infrastructure
+e2e/              Playwright end-to-end tests
+.github/          CI workflow and pull request template
 AGENTS.md         Rules for coding agents
 ```
 

@@ -26,18 +26,25 @@ The starter provides development conventions and reusable infrastructure. Indivi
 - `src/components/`: Reusable presentation components.
 - `src/lib/`: Shared technical capabilities.
 
+## Selected stack
+
+- **Persistence and identity:** Supabase (Postgres and Auth). It is installed by the first slice that needs persistence, not before.
+- **Unit tests:** Vitest.
+- **End-to-end tests:** Playwright.
+
+Vendor SDKs are imported only inside `src/lib`. Features and routes depend on small interfaces owned by this repository, so a vendor can be replaced without touching feature code.
+
 ## Not yet selected
 
 The starter does not currently prescribe:
 
-- Database or ORM
-- Authentication provider
-- Background job provider
+- ORM or query layer
+- Background job and queue mechanism
 - AI model or SDK
 - External integrations
 - General-purpose workflow engine
 
-These choices will be made when implementing the relevant vertical slice.
+These choices will be made when implementing the relevant vertical slice, and recorded here when they are.
 
 ## Verification
 
