@@ -2,7 +2,7 @@
 
 A Next.js starter for building applications with an AI-assisted, spec-first workflow. Use it as a GitHub template.
 
-Stack: Next.js (App Router), TypeScript, Tailwind CSS, ESLint, and [OpenSpec](https://github.com/Fission-AI/OpenSpec) for specifications.
+Stack: Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui, ESLint, Vitest, Playwright, and [OpenSpec](https://github.com/Fission-AI/OpenSpec) for specifications.
 
 ## Getting started
 

@@ -37,6 +37,7 @@ Do not create abstractions in advance. Empty directories are ownership conventio
 - AI output is a proposal. It must not apply state changes without human approval.
 - Do not add dependencies or infrastructure until a slice requires them. The selected stack (Supabase for persistence and auth) is listed in `docs/architecture/README.md`; install it only inside the slice that needs it.
 - Import vendor SDKs only inside `src/lib`; features depend on repository-owned interfaces.
+- Use shadcn/ui primitives from `src/components/ui` instead of raw `button`, `input`, or `dialog` markup. Add new ones with `npx shadcn@latest add <component>`. Style with theme tokens (`bg-background`, `text-muted-foreground`), not hard-coded colors.
 - Do not upgrade dependencies as a side effect of other work. Commit `package-lock.json` changes only when intended.
 - Add tests for important domain behavior and for failure cases.
 
