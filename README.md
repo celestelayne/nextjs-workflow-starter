@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# next-workflow-starter
 
-## Getting Started
+A Next.js starter for building applications with an AI-assisted, spec-first workflow. Use it as a GitHub template.
 
-First, run the development server:
+Stack: Next.js (App Router), TypeScript, Tailwind CSS, ESLint, and [OpenSpec](https://github.com/Fission-AI/OpenSpec) for specifications.
+
+## Getting started
+
+Requires Node.js 22.12.0 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-## Learn More
+## Workflow
 
-To learn more about Next.js, take a look at the following resources:
+Work is done in vertical slices with Claude Code:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Skill | Purpose |
+| --- | --- |
+| `/create-slice` | Specify a slice (OpenSpec change plus `docs/slices/<name>.md`). Planning only. |
+| `/implement-slice` | Build an approved slice without expanding scope. |
+| `/review-slice` | Review against the spec with file-referenced, severity-ranked findings. |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+OpenSpec commands are also available directly (`/opsx:propose`, `/opsx:apply`, `/opsx:verify`, `/opsx:archive`). The `verify` workflow is enabled via `openspec config profile`, a per-machine setting; on a new machine run `openspec config set profile custom` and add `verify` to `workflows`, then `openspec update`.
 
-## Deploy on Vercel
+## Layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+.claude/skills/   Claude Code workflow skills
+docs/architecture Architecture decisions and boundaries
+docs/slices       Slice specs (start from TEMPLATE.md)
+openspec/         OpenSpec specs and changes
+src/app           Routes, layouts, pages
+src/features      Feature-owned domain logic and UI
+src/components    Shared UI components
+src/lib           Shared technical infrastructure
+AGENTS.md         Rules for coding agents
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [docs/architecture/README.md](docs/architecture/README.md) for principles and what is intentionally not yet chosen.

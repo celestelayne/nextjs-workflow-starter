@@ -1,0 +1,34 @@
+schema: spec-driven
+
+context: |
+  Next.js (App Router) + TypeScript + Tailwind starter. Read AGENTS.md and
+  docs/architecture/README.md before proposing structure.
+  Code ownership: src/app (thin routes), src/features (domain logic, schemas,
+  feature UI), src/components (shared UI), src/lib (shared infrastructure).
+  Not yet selected: database/ORM, auth provider, background jobs, AI SDK,
+  external integrations. Do not assume any; list as open questions if a slice
+  needs one.
+  Every slice must be a complete, independently verifiable vertical slice.
+  AI output is a proposal; state changes need human approval.
+  Verification: npm run lint, npx tsc --noEmit, npm run build, plus tests.
+
+rules:
+  proposal:
+    - State goal, scope, and explicitly what is out of scope
+    - List open decisions and technology choices rather than deciding silently
+  specs:
+    - Write testable scenarios, including failure cases (invalid input, denied permission, retry, cancellation)
+  design:
+    - Place code by ownership (app, features, components, lib); do not add abstractions in advance
+    - Justify any new dependency against the slice's need
+  tasks:
+    - Order tasks so each leaves the repo passing lint, tsc, and build
+    - Include tests for important domain behavior and each failure case
+
+operations:
+  apply:
+    guidance:
+      - Do not expand scope beyond the approved change without asking
+  archive:
+    guidance:
+      - Summarize the archive outcome before finishing

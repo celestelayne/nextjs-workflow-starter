@@ -7,3 +7,46 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Repository rules
+
+Architecture and module boundaries are defined in `docs/architecture/README.md`. Read it before structural changes.
+
+### Workflow
+
+Work proceeds in vertical slices, specified with OpenSpec and driven by three skills:
+
+1. `/create-slice` specifies a slice (OpenSpec change plus `docs/slices/<name>.md`). It never implements.
+2. `/implement-slice` builds an approved slice. It never expands scope without approval.
+3. `/review-slice` reviews the result with concrete findings, file references, and severity.
+
+Do not implement anything that has not been specified and approved.
+
+### Where code goes
+
+- `src/app`: routes, layouts, pages, Next.js entry points. Keep thin.
+- `src/features`: feature-owned domain logic, schemas, and UI.
+- `src/components`: UI shared by multiple features.
+- `src/lib`: shared technical infrastructure.
+
+Do not create abstractions in advance. Empty directories are ownership conventions, not a mandate to fill them.
+
+### Rules
+
+- Validate untrusted input at server and integration boundaries.
+- AI output is a proposal. It must not apply state changes without human approval.
+- Do not add dependencies, databases, auth providers, or job infrastructure until a slice requires them.
+- Do not upgrade dependencies as a side effect of other work. Commit `package-lock.json` changes only when intended.
+- Add tests for important domain behavior and for failure cases.
+
+### Verification
+
+Before calling work done, run and report real results of:
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
+
+Plus the test command once one exists.
