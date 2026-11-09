@@ -26,10 +26,13 @@ The starter provides development conventions and reusable infrastructure. Indivi
 - `src/components/`: Reusable presentation components.
 - `src/lib/`: Shared technical capabilities.
 
+See [conventions.md](conventions.md) for dependency direction, feature structure, contracts, the server boundary pattern, configuration, and testing. Decisions and their reasons are recorded in [decisions/](decisions/).
+
 ## Selected stack
 
 - **Persistence and identity:** Supabase (Postgres and Auth). It is installed by the first slice that needs persistence, not before.
 - **UI components:** shadcn/ui (Radix primitives, Tailwind). Primitives live in `src/components/ui` and are added with `npx shadcn@latest add <component>`; they are owned source code, not a dependency.
+- **Validation:** Zod. It is installed by the first slice that needs it.
 - **Unit tests:** Vitest.
 - **End-to-end tests:** Playwright.
 

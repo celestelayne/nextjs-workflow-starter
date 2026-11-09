@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Repository rules
 
-Architecture and module boundaries are defined in `docs/architecture/README.md`. Read it before structural changes.
+Architecture and module boundaries are defined in `docs/architecture/README.md`. Conventions (feature structure, contracts, the server boundary pattern, configuration, testing) are in `docs/architecture/conventions.md`. Decisions are recorded in `docs/architecture/decisions/`. Read these before structural changes, and add a decision record when you make a new architectural choice.
 
 ### Workflow
 
@@ -33,7 +33,11 @@ Do not create abstractions in advance. Empty directories are ownership conventio
 
 ### Rules
 
-- Validate untrusted input at server and integration boundaries.
+- Validate untrusted input at server and integration boundaries with Zod schemas.
+- Return a `Result` (`src/lib/result.ts`) for expected failures; throw only for bugs.
+- Server actions and routes only identify the caller, validate, call the feature service, and return a `Result`. Business rules and permission checks live in the feature's `service.ts`.
+- Import a feature only through `@/features/<name>`. Lint enforces this and the dependency direction (app, features, components, lib).
+- Read environment variables only through `src/lib/env.ts` once it exists; keep `.env.example` current.
 - AI output is a proposal. It must not apply state changes without human approval.
 - Do not add dependencies or infrastructure until a slice requires them. The selected stack (Supabase for persistence and auth) is listed in `docs/architecture/README.md`; install it only inside the slice that needs it.
 - Import vendor SDKs only inside `src/lib`; features depend on repository-owned interfaces.

@@ -43,7 +43,7 @@ OpenSpec commands are also available directly (`/opsx:propose`, `/opsx:apply`, `
 
 ```
 .claude/skills/   Claude Code workflow skills
-docs/architecture Architecture decisions and boundaries
+docs/architecture Principles, conventions, and decision records
 docs/slices       Slice specs (start from TEMPLATE.md)
 openspec/         OpenSpec specs and changes
 src/app           Routes, layouts, pages
